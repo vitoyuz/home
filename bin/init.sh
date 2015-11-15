@@ -2,12 +2,14 @@
 
 sudo=""
 
-if [ `uname -a` | grep "Darwin" = "" ]
+os=`uname -a` | grep "Darwin"
+if [ $os!="" ]
 then
   echo "os is linux"
   sudo="sudo"
   $sudo apt-get install vim
   $sudo apt-get install zsh
+  $sudo apt-get install ctags
 else
   echo "os is osx"
 fi
@@ -21,4 +23,3 @@ $sudo chsh -s /bin/zsh
 echo "vim init"
 git clone https://github.com/gmarik/vundle.git  ~/.vim/bundle/vundle
 vim -c BundleInstall &
-
